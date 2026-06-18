@@ -2,18 +2,10 @@ import discord
 from discord.ext import commands
 import os
 
-GUILD_ID = 1515808781533974619
+intents = discord.Intents.default()
+intents.members = True
 
-@bot.event
-async def on_ready():
-    try:
-        synced = await bot.tree.sync()
-        print(f"Synced {len(synced)} commands")
-    except Exception as e:
-        print(f"Sync error: {e}")
-
-    print(f"Bot online als {bot.user}")
-# /ping
+bot = commands.Bot(command_prefix="!", intents=intents)# /ping
 @bot.tree.command(name="ping", description="Test command")
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("🏓 Pong!") 
