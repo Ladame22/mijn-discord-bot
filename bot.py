@@ -45,7 +45,7 @@ async def ban(interaction: discord.Interaction, user: discord.User, reason: str 
         return
 
     await member.ban(reason=reason)
-    await interaction.response.send_message(f"🔨 {user} gebanned: {reason}")
+    await interaction.response.send_message(f"🔨 {user} gebanned: {reason}") @bot.tree.command(name="ping", description="Test command")
 
 # /help
 @bot.tree.command(name="help", description="Shows commands")
