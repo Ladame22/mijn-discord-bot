@@ -12,9 +12,13 @@ GUILD_ID = 1515808781533974619
 
 @bot.event
 async def on_ready():
-    guild = discord.Object(id=GUILD_ID)
-    await bot.tree.sync(guild=guild)
-    print(f"Bot is online als {bot.user}")
+    try:
+        synced = await bot.tree.sync()
+        print(f"Synced {len(synced)} commands")
+    except Exception as e:
+        print(f"Sync error: {e}")
+
+    print(f"Bot online als {bot.user}")
 
 # /ping
 @bot.tree.command(name="ping", description="Test command")
