@@ -6,9 +6,14 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+import discord
+
+GUILD_ID = JOUW_SERVER_ID_HIER
+
 @bot.event
 async def on_ready():
-    await bot.tree.sync()
+    guild = discord.Object(id=GUILD_ID)
+    await bot.tree.sync(guild=guild)
     print(f"Bot is online als {bot.user}")
 
 # /ping
