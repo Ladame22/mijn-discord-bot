@@ -8,7 +8,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 import discord
 
-GUILD_ID = JOUW_SERVER_ID_HIER
+GUILD_ID = 1515808781533974619
 
 @bot.event
 async def on_ready():
