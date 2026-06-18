@@ -23,4 +23,5 @@ async def help_cmd(interaction: discord.Interaction):
         "/ping - test bot\n/kick - kick user\n/ban - ban user"
     )
 
-bot.run("JOUW_TOKEN_HIER")
+import os
+bot.run(os.getenv("DISCORD_TOKEN"))
