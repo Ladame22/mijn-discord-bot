@@ -19,7 +19,8 @@ async def on_ready():
 # /ping
 @bot.tree.command(name="ping", description="Test command")
 async def ping(interaction: discord.Interaction):
-    await interaction.response.send_message("🏓 Pong!") @bot.tree.command(name="kick", description="Kick een user")
+    await interaction.response.send_message("🏓 Pong!") 
+    @bot.tree.command(name="kick", description="Kick een user")
 async def kick(interaction: discord.Interaction, user: discord.Member, reason: str = "Geen reden"):
     
     if not interaction.user.guild_permissions.kick_members:
