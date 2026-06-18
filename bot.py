@@ -41,6 +41,16 @@ async def ban(interaction: discord.Interaction, user: discord.Member, reason: st
 
     @bot.tree.command(name="ping", description="Test command")
 
+    @bot.event
+async def on_ready():
+    try:
+        synced = await bot.tree.sync()
+        print(f"Synced {len(synced)} commands")
+    except Exception as e:
+        print(f"Sync error: {e}")
+
+    print(f"Bot online als {bot.user}")
+
 # /help
 @bot.tree.command(name="help", description="Shows commands")
 async def help_cmd(interaction: discord.Interaction):
