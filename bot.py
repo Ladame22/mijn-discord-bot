@@ -1,20 +1,26 @@
-import os
 import discord
 from discord.ext import commands
 
-TOKEN = os.getenv("TOKEN")
-
 intents = discord.Intents.default()
-intents.message_content = True
+intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"{bot.user} is online!")
+    await bot.tree.sync()
+    print(f"Bot is online als {bot.user}")
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send("Pong!")
+# /ping
+@bot.tree.command(name="ping", description="Test command")
+async def ping(interaction: discord.Interaction):
+    await interaction.response.send_message("🏓 Pong!")
 
-bot.run(TOKEN)
+# /help
+@bot.tree.command(name="help", description="Shows commands")
+async def help_cmd(interaction: discord.Interaction):
+    await interaction.response.send_message(
+        "/ping - test bot\n/kick - kick user\n/ban - ban user"
+    )
+
+bot.run("JOUW_TOKEN_HIER")
